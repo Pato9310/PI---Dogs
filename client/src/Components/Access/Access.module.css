@@ -1,0 +1,42 @@
+.access__container {
+  background-color: var(--blue-intro);
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5em;
+  text-align: center;
+  padding: 60px 0;
+  overflow: hidden;
+  color: var(--white);
+}
+
+/* .access__container * {
+  outline: 1px solid var(--white);
+} */
+
+.access__img {
+  width: 100%;
+  display: block;
+}
+
+.access__title {
+  margin-top: 1.5em;
+  font-family: var(--heading-font);
+}
+
+.access__paragraph {
+  line-height: 1.5;
+}
+
+.access__cta {
+  width: 250px;
+  padding: 15px 0;
+  border-radius: 2em;
+  background-image: var(--gradient);
+  color: var(--white);
+  font-weight: bold;
+  place-self: center;
+  font-family: var(--heading-font);
+  text-decoration: none;
+}
