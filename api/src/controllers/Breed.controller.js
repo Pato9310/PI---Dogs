@@ -83,26 +83,10 @@ const createBreed = async (req, res) => {
   }
 };
 
-const filterByTemperament = async (req, res) => {
-  try {
-    const { filter } = req.body;
-    const allBreeds = await Breed.findAll({
-      include: { model: Temperament, attributes: ["temperament"] },
-    });
-    const filtered = allBreeds.filter(
-      (breed) => console.log("aca", breed.Temperaments)
-      // breed.Temperaments.temperament.filter((element) =>
-      //   element.toLowerCase().includes(filter.toLowerCase())
-      // )
-    );
-    return res.status(200).send(filtered);
-  } catch (error) {
-    return res.status(400).send({ message: error.message });
-  }
-};
-
+// Ordena las razas segun los atributos seleccionados en el front
 const orderBreed = async (req, res) => {
   try {
+    // Obtengo los valores de los atributos enviados por body
     const { column, direction } = req.body;
     const allBreeds = await Breed.findAll({
       include: Temperament,
@@ -129,5 +113,4 @@ module.exports = {
   getByBreedId,
   createBreed,
   orderBreed,
-  filterByTemperament,
 };
