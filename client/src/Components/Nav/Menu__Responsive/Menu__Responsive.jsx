@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Menu__Responsive.module.css";
 
 const Menu = () => {
@@ -26,15 +27,15 @@ const Menu = () => {
             <button className={styles.menu__close} onClick={handleMenuClose}>
               X
             </button>
-            <a href="#" className={styles.nav__link}>
-              Home
-            </a>
-            <a href="#" className={styles.nav__link}>
-              Create
-            </a>
-            <a href="#" className={styles.nav__link}>
-              Cards
-            </a>
+            <Link to="/home">
+              <button className={styles.nav__link}>Home</button>
+            </Link>
+            <Link to="/create-breed">
+              <button className={styles.nav__link}>Create</button>
+            </Link>
+            <Link to="/home">
+              <button className={styles.nav__link}>Cards</button>
+            </Link>
           </div>
         </div>
       </div>

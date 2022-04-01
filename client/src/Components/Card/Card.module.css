@@ -1,0 +1,145 @@
+.card__Container {
+  display: flex;
+  flex-direction: row;
+  min-height: max-content;
+  min-width: max-content;
+  background-color: #ffffffb9;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.card__Front {
+  min-height: max-content;
+  max-width: 400px;
+  outline: 1px solid red;
+}
+
+.breed {
+  background-color: #f9f7f6;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 3.5rem;
+}
+
+.breed__Image {
+  width: 400px;
+  height: 250px;
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+  z-index: 1;
+}
+
+.breed__Name {
+  grid-row: 1 / 2;
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: end;
+  z-index: 3;
+  width: 300px;
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #101d2c;
+  color: #fff;
+  font-weight: 400;
+  transform: translateY(60%);
+}
+
+.temperament__Container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 400px;
+  min-height: auto;
+}
+
+.btn {
+  background-color: #0ad48b;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  width: 400px;
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 1.2rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: #05ac72;
+}
+/* -------------------------------------------------------------- */
+
+.temperament__Container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 200px;
+  margin: 0;
+  padding: 0;
+}
+.temperament__Container h5 {
+  float: left;
+  position: relative;
+  text-transform: uppercase;
+  background-color: #1abc9c; /* el color de fondo que se nos ocurra */
+  /* la altura */
+  height: 24px;
+  line-height: 24px;
+  /* el ancho lo resolvemos con paddings horizontales */
+  padding: 0 10px 0 12px;
+  /* la separación entre etiquetas */
+  margin-left: 20px;
+  /* definiciones del texto */
+  color: #000000;
+  font-size: 12px;
+  font-family: Arial;
+  text-decoration: none;
+  /* una curva suave a laderecha */
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+/* esto creará el triángulo de la izquierda */
+.temperament__Container h5:before {
+  border-color: transparent #1abc9c transparent transparent;
+  border-style: solid;
+  /* el borde es igual a la mitad de la altura definida anteriormente */
+  /* de ese modo será un triángulo equilátero */
+  border-width: 12px 12px 12px 0;
+  content: "";
+  float: left;
+  left: -12px; /* lo movemos tanto como el valor dado al borde */
+  height: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+/* esto, creará el circulito que precede a los textos */
+.temperament__Container h5:after {
+  background-color: #fff; /* el color */
+  content: "";
+  float: left;
+  left: 0;
+  position: absolute;
+  top: 10px; /* lo ubicamos centrado en al mitad de la altura */
+  /* el ancho y la altura son iguales para que sea un círculo */
+  height: 4px;
+  width: 4px;
+  /* el radio de la curva es la mitad de su tamaño */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+/* efectos hover */
+.temperament__Container h5:hover {
+  background-color: #555;
+}
+.temperament__Container h5:hover:before {
+  border-color: transparent #555 transparent transparent;
+}

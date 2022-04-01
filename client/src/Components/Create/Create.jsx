@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useForm } from "./useForm";
-import NavBar from "../NavBar/NavBar";
-import "./Create.module.css";
+import Nav from "../Nav/Nav";
+import styles from "./Create.module.css";
 
 const initialForm = {
   name: "",
@@ -10,7 +10,8 @@ const initialForm = {
   max__height: "",
   min__weight: "",
   max__weight: "",
-  temperaments: [],
+  life__span: "",
+  temperament: [],
 };
 
 const validationsForm = (form) => {
@@ -25,8 +26,10 @@ const validationsForm = (form) => {
     errors.min__weight = "You must complete the 'Min weight' field.";
   } else if (!form.max__weight) {
     errors.max__weight = "You must complete the 'Max weight' field.";
-  } else if (!form.temperaments) {
-    errors.temperaments = "You must complete the 'Temperaments' field.";
+  } else if (!form.life__span) {
+    errors.life__span = "You must complete the 'Life span' field.";
+  } else if (!form.temperament) {
+    errors.temperament = "You must complete the 'Temperament' field.";
   }
   return errors;
 };
@@ -44,118 +47,135 @@ const Create = () => {
 
   return (
     <div>
-      <NavBar />
-      <div className="recipeCardContainer">
-        <div className="recipeCard">
-          <form className="formRecipe" onSubmit={handleSubmit}>
-            <span className="titleCreateRecipe"> Create New Breed </span>
-            <div className="inputRecipes">
-              <label className="labelRecipe" id="name">
+      <Nav />
+      <div className={styles.card__Container}>
+        <div className={styles.breed__Card}>
+          <form onSubmit={handleSubmit}>
+            <span className={styles.breed__title}> Create New Breed </span>
+            <div className={styles.breed__input__container}>
+              <label className={styles.breed__label} id="name">
                 Name:{" "}
               </label>
               <input
-                className="i"
+                className={styles.breed__input}
                 type="text"
                 placeholder="Breed name..."
                 value={form.name}
                 name="name"
                 onChange={handleChange}
               />
-              {errors.name && <p className="errors">{errors.name}</p>}
+              {errors.name && <p className={styles.errors}>{errors.name}</p>}
             </div>
-            <div className="inputRecipes" id="summary">
+            <div className={styles.breed__input__container} id="min__height">
               <label>Min Height: </label>
               <input
-                className="i"
-                type="text"
+                className={styles.breed__input}
+                type="range"
                 value={form.summary}
                 name="min__height"
                 placeholder="Min Height..."
+                min="5"
+                max="30"
                 onChange={handleChange}
               />
               {errors.min__height && (
-                <p className="errors">{errors.min__height}</p>
+                <p className={styles.errors}>{errors.min__height}</p>
               )}
             </div>
-            <div className="inputRecipes" id="score">
+            <div className={styles.breed__input__container} id="max__height">
               <label>Max Height : {form.max__height} </label>
               <input
-                className="i"
+                className={styles.breed__input}
                 type="range"
                 name="max__height"
-                min="1"
-                max="100"
+                min="9"
+                max="35"
                 value={form.max__height}
                 onChange={(event) => handleChange(event)}
               />
               {errors.max__height && (
-                <p className="errors"> {errors.max__height}</p>
+                <p className={styles.errors}> {errors.max__height}</p>
               )}
             </div>
-            <div className="inputRecipes" id="healthyScore">
+            <div className={styles.breed__input__container} id="min__weight">
               <label>Min weight : {form.min__weight}</label>
               <input
-                className="i"
+                className={styles.breed__input}
                 type="range"
                 name="min__weight"
-                min="1"
-                max="100"
+                min="3"
+                max="130"
                 value={form.min__weight}
                 onChange={(event) => handleChange(event)}
               />
               {errors.min__weight && (
-                <p className="errors">{errors.min__weight}</p>
+                <p className={styles.errors}>{errors.min__weight}</p>
               )}
             </div>
-            <div className="inputRecipes">
-              <label className="msgs">Max Weight:</label>
-              <textarea
-                id="steps"
+            <div className={styles.breed__input__container} id="max__weight">
+              <label>Max Weight:</label>
+              <input
+                className={styles.breed__input}
+                type="range"
                 name="max__weight"
-                className="steps"
-                type="text"
+                min="6"
+                max="200"
                 value={form.max__weight}
                 onChange={(event) => handleChange(event)}
               />
               {errors.max__weight && (
-                <p className="errors">{errors.max__weight}</p>
+                <p className={styles.errors}>{errors.max__weight}</p>
+              )}
+            </div>
+
+            <div className={styles.breed__input__container} id="life__span">
+              <label>Life Span:</label>
+              <input
+                className={styles.breed__input}
+                type="text"
+                name="life__span"
+                value={form.life__span}
+                onChange={(event) => handleChange(event)}
+              />
+              {errors.life__span && (
+                <p className={styles.errors}>{errors.life__span}</p>
               )}
             </div>
 
             <div>
               <select
-                name="temperaments"
-                className="i"
+                name="temperament"
+                className={styles.breed__input}
                 id="temperament"
                 onChange={(event) => handleSelect(event)}
               >
-                <option className="op">Temperaments: </option>
+                <option>Temperaments: </option>
                 {temperaments.map((temperament) => (
-                  <option className="op" value={temperament} key={temperament}>
+                  <option value={temperament} key={temperament}>
                     {temperament}
                   </option>
                 ))}
               </select>
-              {errors.temperaments && (
-                <p className="errors">{errors.temperaments}</p>
+              {errors.temperament && (
+                <p className={styles.errors}>{errors.temperament}</p>
               )}
             </div>
 
-            <div className="textArea">
-              {form.temperaments.map((temperament) => (
-                <div key={temperament} className="typeAndButton">
-                  <p className="pOfType">{temperament}</p>
-                  <input
-                    className="btnDelete"
-                    type="button"
-                    value="X"
+            <div className={styles.temperaments__Container}>
+              {form.temperament.map((temperament) => (
+                <div key={temperament} className={styles.temperaments__Slot}>
+                  <p className={styles.temperament__name}>{temperament}</p>
+                  <button
+                    className={styles.temperament__Btn__Delete}
                     onClick={() => handleDelete(temperament)}
-                  />
+                  >
+                    X
+                  </button>
                 </div>
               ))}
             </div>
-            <div className="btnContainer">
-              <button className="btnRecipe" type="submit">
+            <div className={styles.btn__Container}>
+              <button className={styles.btn__Breed} type="submit">
                 Create Breed
               </button>
             </div>

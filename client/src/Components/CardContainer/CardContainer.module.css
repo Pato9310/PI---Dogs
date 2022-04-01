@@ -1,0 +1,62 @@
+.Container {
+  background-color: #80cbc4;
+  padding-top: 10px;
+  margin-top: -10px;
+}
+
+.filter__Container {
+  width: 100%;
+  background-color: #4db6ac;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sort__Container {
+  display: flex;
+  width: 30%;
+  justify-content: center;
+}
+
+.reset {
+  color: #ffffff;
+  background-color: #00838f;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.reset:hover {
+  color: #00838f;
+  background-color: #ffffff;
+}
+
+.filters {
+  color: #ffffff;
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 6px 4px 5px #ffffff3f;
+  padding: 10px 3px 0px;
+  text-transform: uppercase;
+}
+
+.select {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 50%;
+}
+
+.card__Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 10px;
+}

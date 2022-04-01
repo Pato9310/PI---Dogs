@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Access.module.css";
 
 const Access = () => {
@@ -14,9 +15,9 @@ const Access = () => {
         Breve descripcion del proyecto o bien algun mensaje de bienvenida al
         sitio weba
       </p>
-      <a href="#" className={styles.access__cta}>
-        Get Started
-      </a>
+      <Link to="/home">
+        <button className={styles.access__cta}>Get Started</button>
+      </Link>
     </section>
   );
 };
