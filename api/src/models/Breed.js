@@ -20,7 +20,6 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     min__height: {
       type: DataTypes.INTEGER,

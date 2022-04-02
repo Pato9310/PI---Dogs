@@ -11,7 +11,21 @@ const getBreeds = async (req, res) => {
       const allBreeds = await Breed.findAll({
         include: Temperament,
       });
-      return res.send(allBreeds);
+      return res.send(
+        allBreeds.map((breed) => {
+          let obj = {
+            id: breed.id,
+            image: breed.image,
+            name: breed.name,
+            min__height: breed.min__height,
+            max__height: breed.max__height,
+            min__weight: breed.min__weight,
+            max__weight: breed.max__weight,
+            temperament: breed.Temperaments[0]?.temperament,
+          };
+          return obj;
+        })
+      );
     }
     // caso contrario devuelve la raza del query o cualquier raza que contenga dicho query
     const list = await Breed.findAll({
@@ -23,7 +37,21 @@ const getBreeds = async (req, res) => {
       },
     });
     return list.length > 0
-      ? res.send(list.map((dog) => dog.name))
+      ? res.send(
+          list.map((breed) => {
+            let obj = {
+              id: breed.id,
+              image: breed.image,
+              name: breed.name,
+              min__height: breed.min__height,
+              max__height: breed.max__height,
+              min__weight: breed.min__weight,
+              max__weight: breed.max__weight,
+              temperament: breed.Temperaments[0]?.temperament,
+            };
+            return obj;
+          })
+        )
       : res.status(404).send({ message: "Breed does not found" });
   } catch (e) {
     console.log(e);
@@ -33,7 +61,6 @@ const getBreeds = async (req, res) => {
 // Obtengo un raza especifica de acuerdo al ID de la misma
 const getByBreedId = async (req, res) => {
   const { id } = req.params;
-  console.log("entre en id", id);
   if (id.length) {
     try {
       const dog = await Breed.findOne({
@@ -60,6 +87,7 @@ const createBreed = async (req, res) => {
     image,
     temperament,
   } = req.body;
+  console.log("aca:", req.body);
   try {
     const id = uuidv4().toString().toUpperCase();
     const newBreed = await Breed.create({
@@ -76,7 +104,8 @@ const createBreed = async (req, res) => {
       id,
       temperament,
     });
-    await newBreed.addTemperament(newTemperament.id);
+    console.log("created:", newTemperament);
+    await newBreed.addTemperament(newTemperament);
     return res.send({ message: "Dog created successfully" });
   } catch (err) {
     console.log(err);
@@ -87,8 +116,8 @@ const createBreed = async (req, res) => {
 const orderBreed = async (req, res) => {
   try {
     // Obtengo los valores de los atributos enviados por body
-    const { column, direction } = req.body;
-    const allBreeds = await Breed.findAll({
+    const { column, direction } = req.query;
+    let allBreeds = await Breed.findAll({
       include: Temperament,
     });
     direction === "asc"
@@ -102,7 +131,21 @@ const orderBreed = async (req, res) => {
           if (a[column] > b[column]) return -1;
           return 0;
         });
-    return res.status(200).send(allBreeds);
+    return res.status(200).send(
+      allBreeds.map((breed) => {
+        let obj = {
+          id: breed.id,
+          image: breed.image,
+          name: breed.name,
+          min__height: breed.min__height,
+          max__height: breed.max__height,
+          min__weight: breed.min__weight,
+          max__weight: breed.max__weight,
+          temperament: breed.Temperaments[0]?.temperament,
+        };
+        return obj;
+      })
+    );
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
