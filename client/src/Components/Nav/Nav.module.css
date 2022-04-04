@@ -1,10 +1,6 @@
 .header {
-  background-color: #dd0a0a;
+  background-color: #ffffff;
 }
-
-/* .header * {
-  outline: 1px solid var(--white);
-} */
 
 .nav {
   width: 90%;
@@ -18,11 +14,20 @@
 
 .nav__logo {
   width: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.nav__title {
+  font-size: 2.3em;
+  color: #000000;
+  /* font-family: "Rubik Moonrocks", cursive; */
+  font-family: "Alfa Slab One", cursive;
+  margin-left: 10px;
 }
 
 .nav__img {
-  width: 100%;
-  display: block;
+  width: 20%;
 }
 
 .form {
@@ -43,29 +48,21 @@
 }
 
 .form__input::placeholder {
-  color: var(--white);
+  color: #000000;
 }
 
 .form__button {
-  cursor: pointer;
-  margin-left: 5px;
-  width: 15px;
-  height: 15px;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  position: relative;
+  width: 30px;
+  height: 30px;
+  background-image: url("https://cdn-icons.flaticon.com/png/512/2311/premium/2311526.png?token=exp=1648920257~hmac=063fbe5ebacdd1ff3d7b2194dc4dded5");
+  /* background-image: url("https://cdn-icons-png.flaticon.com/512/667/667332.png"); */
+  background-size: contain;
+  border: none;
+  background-color: transparent;
 }
 
-.form__button:after {
-  position: absolute;
-  width: 80%;
-  height: 4px;
-  background-color: #fff;
-  display: block;
-  content: "";
-
-  transform: rotate(45deg);
-  transform-origin: -4px 18px;
+.form__button:hover {
+  cursor: pointer;
 }
 
 .form__button:active {
@@ -121,9 +118,15 @@
 
   .nav__link {
     font-size: 1.3em;
+    font-weight: 600;
+    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+    color: #000000;
+    transition: all 0.1s ease-in-out 0.2s;
   }
 
   .nav__link:hover {
-    border-bottom: 2px solid var(--white);
+    border-bottom: 4px solid #000000;
   }
 }

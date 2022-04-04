@@ -33,10 +33,11 @@ const Nav = () => {
       <nav className={styles.nav}>
         <figure className={styles.nav__logo}>
           <img
-            src="https://image.pngaaa.com/557/3780557-middle.png"
+            src="https://cdn-icons-png.flaticon.com/512/21/21645.png"
             className={styles.nav__img}
             alt="logo"
           />
+          <h1 className={styles.nav__title}>Dogs</h1>
         </figure>
         <form className={styles.form} onSubmit={(event) => handleSubmit(event)}>
           <input
@@ -45,9 +46,7 @@ const Nav = () => {
             placeholder="Search Breed..."
             onChange={(event) => handleChange(event)}
           />
-          <button type="submit">
-            <div className={styles.form__button}></div>
-          </button>
+          <button className={styles.form__button} type="submit" />
         </form>
         {menu ? (
           <Menu />

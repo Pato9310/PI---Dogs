@@ -1,35 +1,41 @@
 .card__Container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #80cbc4;
+  justify-content: flex-end;
+  background-image: url("https://www.akc.org/wp-content/uploads/2018/10/Black-dogs-superstition-hero-800x600.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .breed__Card {
-  background-color: #ffffffb7;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  background-color: #0bfaa2;
+  margin-top: 2%;
+  margin-right: 10%;
   height: 85%;
-  width: 70%;
-  border-radius: 6%;
-  padding: 70px 100px;
+  width: 40%;
+  border-radius: 50px;
+  padding: 50px 100px;
 }
 
 .breed__title {
   color: #000000;
   text-transform: uppercase;
   font-size: 23px;
-  margin: -40px 0 20px 0;
+  font-weight: bold;
   display: block;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .breed__input__container {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .breed__label {
   font-size: 16px;
+  font-weight: bold;
   color: #000000;
   pointer-events: none;
   transition: all 0.5s ease-in-out;
@@ -38,16 +44,22 @@
 .breed__input {
   border: 0;
   border-bottom: 1px solid #555;
-  background-color: #b2dfdb;
+  background-color: #ffffff;
   width: 100%;
-  padding: 12px 0 5px 0;
+  padding: 7px 0 7px 0;
   font-size: 16px;
   color: #000000;
+  border-radius: 5px;
+}
+
+.breed__input::placeholder {
+  padding-left: 10px;
 }
 
 .breed__input:focus {
   border: none;
   outline: none;
+  margin-top: 10px;
   border-bottom: 1px solid #e74c3c;
 }
 
@@ -57,18 +69,20 @@
 }
 
 .btn__Breed {
-  color: #fff;
+  color: #07a56b;
   border: none;
-  background-color: #0ad48b;
+  background-color: #ffffff;
   outline: none;
   padding: 10px 20px;
   text-transform: uppercase;
   border-radius: 2px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .btn__Breed:hover {
-  background-color: #07a56b;
+  background-color: #000000;
+  color: #07a56b;
 }
 
 .breed__input:focus ~ .breed__label,
@@ -78,8 +92,8 @@
 }
 
 .temperaments__Container {
-  background-color: #80cbc36b;
-  box-shadow: inset 1px 2px 6px 5px #63b9b2;
+  background-color: #0df39f;
+  box-shadow: inset 1px 2px 6px 5px #08b374;
   border-radius: 5px;
   width: 100%;
   margin: 1.2rem auto;

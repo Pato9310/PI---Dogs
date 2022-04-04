@@ -67,7 +67,9 @@ const Create = () => {
               {errors.name && <p className={styles.errors}>{errors.name}</p>}
             </div>
             <div className={styles.breed__input__container} id="min__height">
-              <label>Min Height: </label>
+              <label className={styles.breed__label}>
+                Min Height: {form.min__height}{" "}
+              </label>
               <input
                 className={styles.breed__input}
                 type="range"
@@ -83,7 +85,9 @@ const Create = () => {
               )}
             </div>
             <div className={styles.breed__input__container} id="max__height">
-              <label>Max Height : {form.max__height} </label>
+              <label className={styles.breed__label}>
+                Max Height : {form.max__height}{" "}
+              </label>
               <input
                 className={styles.breed__input}
                 type="range"
@@ -98,7 +102,9 @@ const Create = () => {
               )}
             </div>
             <div className={styles.breed__input__container} id="min__weight">
-              <label>Min weight : {form.min__weight}</label>
+              <label className={styles.breed__label}>
+                Min weight : {form.min__weight}
+              </label>
               <input
                 className={styles.breed__input}
                 type="range"
@@ -113,7 +119,9 @@ const Create = () => {
               )}
             </div>
             <div className={styles.breed__input__container} id="max__weight">
-              <label>Max Weight:</label>
+              <label className={styles.breed__label}>
+                Max Weight: {form.max__weight}
+              </label>
               <input
                 className={styles.breed__input}
                 type="range"
@@ -129,12 +137,13 @@ const Create = () => {
             </div>
 
             <div className={styles.breed__input__container} id="life__span">
-              <label>Life Span:</label>
+              <label className={styles.breed__label}>Life Span:</label>
               <input
                 className={styles.breed__input}
                 type="text"
                 name="life__span"
                 value={form.life__span}
+                placeholder="7 - 10 years for example"
                 onChange={(event) => handleChange(event)}
               />
               {errors.life__span && (
@@ -143,13 +152,13 @@ const Create = () => {
             </div>
 
             <div>
+              <label className={styles.breed__label}>Temperaments:</label>
               <select
                 name="temperament"
                 className={styles.breed__input}
                 id="temperament"
                 onChange={(event) => handleSelect(event)}
               >
-                <option>Temperaments: </option>
                 {temperaments.map((temperament) => (
                   <option value={temperament} key={temperament}>
                     {temperament}

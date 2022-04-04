@@ -9,6 +9,7 @@ import {
   weightSort,
 } from "../../Actions";
 import Card from "../Card/Card";
+import Nav from "../Nav/Nav";
 import Paginated from "../Paginated/Paginated";
 import styles from "./CardContainer.module.css";
 
@@ -75,6 +76,9 @@ const Card__Container = () => {
   return (
     <div>
       <div className={styles.Container}>
+        <div className={styles.nav}>
+          <Nav />
+        </div>
         <div className={styles.filter__Container}>
           <div className={styles.sort__Container}>
             <label className={styles.filters}>Sort By:</label>

@@ -27,6 +27,6 @@
 }
 
 body {
-  background-color: var(--blue-main);
+  /* background-image: url("https://www.psdgraphics.com/wp-content/uploads/2016/08/paws-pattern.jpg"); */
   font-family: var(--body-font);
 }

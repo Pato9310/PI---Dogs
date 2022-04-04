@@ -1,0 +1,71 @@
+.main__Container {
+  background-image: url("https://s1.1zoom.me/big0/42/Dogs_Cane_Corso_Puppy_Black_background_525148_1280x847.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.detail__Container {
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  max-width: 80%;
+  max-height: 80%;
+  color: #fff;
+  border: 1px solid #ffffff;
+  background-color: #f9f7f60c;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.detail__image {
+  max-width: 500px;
+  max-height: 700px;
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px 5px #ffffff48;
+}
+
+.detail__title {
+  font-size: 2.5em;
+  font-weight: bold;
+  max-width: max-content;
+  max-height: min-content;
+}
+
+.atributes__Container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 20px;
+  font-size: 1.3em;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+}
+
+.detail__label {
+  background-color: #ffffff4f;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.atributes__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+}
+
+.item {
+  padding: 5px;
+  background-color: #0ad48b;
+  border-radius: 5px;
+}
