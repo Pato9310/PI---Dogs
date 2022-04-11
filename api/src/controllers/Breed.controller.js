@@ -21,6 +21,7 @@ const getBreeds = async (req, res) => {
             max__height: breed.max__height,
             min__weight: breed.min__weight,
             max__weight: breed.max__weight,
+            life__span: breed.life__span,
             temperament: breed.Temperaments[0]?.temperament,
           };
           return obj;
@@ -47,6 +48,7 @@ const getBreeds = async (req, res) => {
               max__height: breed.max__height,
               min__weight: breed.min__weight,
               max__weight: breed.max__weight,
+              life__span: breed.life__span,
               temperament: breed.Temperaments[0]?.temperament,
             };
             return obj;
@@ -67,12 +69,14 @@ const getByBreedId = async (req, res) => {
         include: Temperament,
         where: { id: id },
       });
-      return res.status(200).send(dog);
+      return dog
+        ? res.status(200).send(dog)
+        : res.status(404).send({ message: "Should enter a valid ID" });
     } catch (err) {
-      return res.status(400).send({ message: "Should enter a valid ID" });
+      return res.send({ message: "Something goes wrong with your id request" });
     }
   }
-  return res.status(400).send({ message: "Should enter an ID" });
+  return res.status(404).send({ message: "Should enter an ID" });
 };
 
 // Crea una nueva raza segun los datos ingresados en el form del front
@@ -83,11 +87,10 @@ const createBreed = async (req, res) => {
     max__height,
     min__weight,
     max__weight,
-    life_span,
+    life__span,
     image,
     temperament,
   } = req.body;
-  console.log("aca:", req.body);
   try {
     const id = uuidv4().toString().toUpperCase();
     const newBreed = await Breed.create({
@@ -98,17 +101,16 @@ const createBreed = async (req, res) => {
       max__weight,
       min__height,
       max__height,
-      life_span,
+      life__span,
     });
     const newTemperament = await Temperament.create({
       id,
       temperament,
     });
-    console.log("created:", newTemperament);
     await newBreed.addTemperament(newTemperament);
-    return res.send({ message: "Dog created successfully" });
+    return res.status(200).send({ message: "Dog created successfully" });
   } catch (err) {
-    console.log(err);
+    return res.status(404).send({ message: error.message });
   }
 };
 
@@ -141,6 +143,7 @@ const orderBreed = async (req, res) => {
           max__height: breed.max__height,
           min__weight: breed.min__weight,
           max__weight: breed.max__weight,
+          life__span: breed.life__span,
           temperament: breed.Temperaments[0]?.temperament,
         };
         return obj;

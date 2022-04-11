@@ -32,7 +32,7 @@ const preChargeDb = async () => {
       max__weight: parseInt(weight[1])
         ? parseInt(weight[1])
         : parseInt(weight[0]),
-      life_span: breed.life_span,
+      life__span: breed.life_span,
     };
   });
   // Ingreso a la DB

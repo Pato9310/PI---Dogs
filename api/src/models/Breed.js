@@ -24,20 +24,40 @@ module.exports = (sequelize) => {
     min__height: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "The field can't be null",
+        },
+      },
     },
     max__height: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "The field can't be null",
+        },
+      },
     },
     min__weight: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "The field can't be null",
+        },
+      },
     },
     max__weight: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "The field can't be null",
+        },
+      },
     },
-    life_span: {
+    life__span: {
       type: DataTypes.STRING,
     },
   });
