@@ -55,8 +55,8 @@ const getBreeds = async (req, res) => {
           })
         )
       : res.status(404).send({ message: "Breed does not found" });
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    res.status(404).send({ message: error.message });
   }
 };
 
@@ -150,7 +150,7 @@ const orderBreed = async (req, res) => {
       })
     );
   } catch (error) {
-    res.status(400).send({ message: error.message });
+    res.status(404).send({ message: error.message });
   }
 };
 

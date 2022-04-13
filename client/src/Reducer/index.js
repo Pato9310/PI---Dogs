@@ -15,7 +15,6 @@ const initialState = {
   allBreeds: [],
   filtered: [],
   detail: [],
-  search: [],
   createdBreed: [],
 };
 
@@ -43,7 +42,7 @@ export default function rootReducer(state = initialState, action) {
     case SEARCH_BREEDS:
       return {
         ...state,
-        search: action.payload,
+        filtered: action.payload,
       };
 
     case CREATE_BREED:

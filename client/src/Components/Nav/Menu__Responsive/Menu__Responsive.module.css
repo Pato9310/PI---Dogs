@@ -12,22 +12,24 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(10, 10, 10, 0.86);
+  background-color: rgba(10, 10, 10, 0.911);
+  z-index: 9;
 }
 
 .menu__card {
   margin: 0 auto;
   margin-top: 120px;
-  padding: 10px;
+  padding: 10px 10px 20px 10px;
   width: 250px;
   height: 200px;
-  background-color: hsla(217, 27%, 13%, 0.438);
+  background-color: hsl(217, 27%, 13%);
   display: flex;
   gap: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .menu__close {
@@ -43,12 +45,12 @@
   color: var(--white);
   text-decoration: none;
   display: flex;
-  margin-left: 0.8em;
+  /* margin-left: 0.8em; */
   background-color: var(--blue-gradient);
   padding: 10px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border: none;
-  width: 100%;
+  width: 200px;
   justify-content: center;
 }
 
@@ -61,6 +63,6 @@
 .button__bar1 {
   width: 25px;
   height: 5px;
-  background-color: var(--white);
+  background-color: #000000;
   margin-top: 5px;
 }

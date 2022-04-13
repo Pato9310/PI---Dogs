@@ -33,19 +33,14 @@ const Menu = () => {
             <Link to="/create-breed">
               <button className={styles.nav__link}>Create</button>
             </Link>
-            <Link to="/home">
-              <button className={styles.nav__link}>Cards</button>
-            </Link>
           </div>
         </div>
       </div>
-      {/* <button className={styles.menu__button} onClick={handleMenuOpen}> */}
       <div className={styles.menu__button__container} onClick={handleMenuOpen}>
         <div className={styles.button__bar1}></div>
         <div className={styles.button__bar1}></div>
         <div className={styles.button__bar1}></div>
       </div>
-      {/* </button> */}
     </div>
   );
 };

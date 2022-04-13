@@ -7,6 +7,7 @@ const getTemperaments = async (req, res) => {
     const list = await Temperament.findAll({
       atributes: ["temperament"],
     });
+    // Aplano el array a un mismo nivel
     const types = list.map((el) => el.temperament).flat();
     // Elimino elementos repetidos
     const result = types.filter((item, index) => {

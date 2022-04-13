@@ -5,7 +5,6 @@ const { Breed, Temperament } = require("../db.js");
 
 // Obtengo los datos provenientes de la API y los ingreso a la DB
 const preChargeDb = async () => {
-  // axios.defaults.headers.common["x-api-key"] = API_KEY;
   // Peticion a la API
   const apiResponse = await axios.get("https://api.thedogapi.com/v1/breeds");
   let breeds = apiResponse.data.map((breed) => {

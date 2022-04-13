@@ -9,7 +9,7 @@
 }
 
 .breed__Card {
-  background-color: #0bfaa2;
+  background-color: #0bfaa2ab;
   margin-top: 2%;
   margin-right: 10%;
   height: 85%;
@@ -46,20 +46,15 @@
   border-bottom: 1px solid #555;
   background-color: #ffffff;
   width: 100%;
-  padding: 7px 0 7px 0;
+  padding: 7px 0 7px 10px;
   font-size: 16px;
   color: #000000;
   border-radius: 5px;
 }
 
-.breed__input::placeholder {
-  padding-left: 10px;
-}
-
 .breed__input:focus {
   border: none;
   outline: none;
-  margin-top: 10px;
   border-bottom: 1px solid #e74c3c;
 }
 
@@ -92,8 +87,8 @@
 }
 
 .temperaments__Container {
-  background-color: #0df39f;
-  box-shadow: inset 1px 2px 6px 5px #08b374;
+  background-color: #0df39f46;
+  box-shadow: inset 1px 2px 6px 5px #08b374de;
   border-radius: 5px;
   width: 100%;
   margin: 1.2rem auto;
@@ -138,5 +133,43 @@
 
 .errors {
   color: red;
-  font-size: small;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .breed__Card {
+    background-color: #0bfaa275;
+    min-width: max-content;
+  }
+  .breed__title {
+    font-size: 1.1em;
+  }
+  .breed__label {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 425px) {
+  .card__Container {
+    background-size: cover;
+  }
+  .breed__Card {
+    background-color: #0bfaa275;
+    min-width: max-content;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+  .breed__title {
+    font-size: 0.8em;
+  }
+  .breed__label {
+    font-size: 0.8em;
+  }
+  .breed__input {
+    padding: 2px;
+  }
+  .btn__Breed {
+    width: 100%;
+  }
 }

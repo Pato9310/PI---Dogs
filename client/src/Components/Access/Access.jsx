@@ -5,11 +5,6 @@ import styles from "./Access.module.css";
 const Access = () => {
   return (
     <section className={styles.access__container}>
-      {/* <img
-        src="https://wallpapercave.com/wp/wp3171098.jpg"
-        className={styles.access__img}
-        alt="access"
-      /> */}
       <h1 className={styles.access__title}>The Dog House</h1>
       <p className={styles.access__paragraph}>
         At <b>Dog House</b> we invite you to learn about the different existing

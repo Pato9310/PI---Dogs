@@ -58,9 +58,6 @@ const Nav = () => {
             <Link to="/create-breed">
               <button className={styles.nav__link}>Create</button>
             </Link>
-            <Link to="/home">
-              <button className={styles.nav__link}>Cards</button>
-            </Link>
           </div>
         )}
       </nav>

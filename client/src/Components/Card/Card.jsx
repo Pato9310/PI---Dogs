@@ -17,7 +17,15 @@ const Card = (prop) => {
       <div className={styles.card__Container} key={id}>
         <div className={styles.card__Front}>
           <div className={styles.breed}>
-            <img className={styles.breed__Image} src={image} alt="Not found" />
+            <img
+              className={styles.breed__Image}
+              src={
+                image
+                  ? image
+                  : "https://img.freepik.com/vector-gratis/lindo-perro-corgi-comiendo-dibujos-animados-hueso_138676-2534.jpg?w=2000"
+              }
+              alt="Not found"
+            />
             <h2 className={styles.breed__Name}>{name}</h2>
           </div>
           <div className={styles.temperament__Container}>
@@ -28,8 +36,8 @@ const Card = (prop) => {
               </h5>
             ))}
             <div className={styles.label}>Weight</div>
-            <h5>Min: {min__weight}</h5>
-            <h5>Max: {max__weight}</h5>
+            <h5 className={styles.weight}>Min: {min__weight}</h5>
+            <h5 className={styles.weight}>Max: {max__weight}</h5>
           </div>
           <div className={styles.btn__Container}>
             <Link to={`/breeds/${id}`}>

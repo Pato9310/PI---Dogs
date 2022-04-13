@@ -8,7 +8,6 @@
   justify-content: space-between;
   gap: 1.5em;
   text-align: justify;
-  overflow: hidden;
 }
 
 .access__title {
@@ -28,14 +27,12 @@
   font-size: 2em;
   color: #000000;
   line-height: 1.5;
-  border-radius: 20px;
 }
 
 .access__cta {
   width: 200px;
   padding: 15px 0;
   border: none;
-  border-radius: 15px;
   background-color: #0ad48b;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.651);
   color: var(--white);
@@ -62,4 +59,57 @@
 
 .access__cta:active {
   transform: scale(0.9);
+}
+
+@media (max-width: 1024px) {
+  .access__container {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .access__title {
+    font-size: 2em;
+  }
+
+  .access__paragraph {
+    font-size: 1em;
+  }
+
+  .access__cta {
+    font-size: 0.8em;
+    width: 150px;
+    margin-left: 5.5em;
+    margin-bottom: 8em;
+  }
+}
+
+@media (max-width: 425px) {
+  .access__container {
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: 85% 50%;
+  }
+
+  .access__title {
+    font-size: 1.8em;
+    margin: 0 auto;
+    margin-top: 1em;
+  }
+
+  .access__paragraph {
+    background-color: #0000006e;
+    color: #ffffff;
+    font-size: 1.2em;
+    width: 100%;
+    margin: 50% auto 0 auto;
+  }
+
+  .access__cta {
+    font-size: 1em;
+    width: 100vw;
+    height: 10vh;
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+  }
 }

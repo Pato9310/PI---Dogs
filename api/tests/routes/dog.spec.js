@@ -36,5 +36,44 @@ describe("Routes Testing", () => {
       it("should response 200 if id exists", () =>
         agent.get("/breeds/123456").expect(200));
     });
+    describe("POST /breeds", function () {
+      it("response with 200", function () {
+        return agent
+          .post("/breeds/create")
+          .send({
+            id: "4567",
+            name: "Puggy",
+            min__height: 4,
+            max__height: 10,
+            min__weight: 10,
+            max__weight: 30,
+            life__span: "5-8 years",
+          })
+          .expect(200);
+      });
+      it("create a breed on DB", function () {
+        return agent
+          .post("/breeds/create")
+          .send({
+            id: "12879",
+            name: "Pugggy",
+            min__height: 4,
+            max__height: 10,
+            min__weight: 10,
+            max__weight: 30,
+            life__span: "5-8 years",
+          })
+          .then(() => {
+            return Breed.findOne({
+              where: {
+                name: "Pugggy",
+              },
+            });
+          })
+          .then((breed) => {
+            expect(breed).to.exist;
+          });
+      });
+    });
   });
 });

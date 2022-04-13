@@ -38,24 +38,28 @@
 
 .form__input {
   width: 93%;
-  color: var(--white);
+  color: #000000;
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid var(--white);
-  box-shadow: inset 1px 2px 6px 5px var(--blue-main);
-  border-radius: 5px;
+  border-bottom: 2px solid #000000;
+  /* box-shadow: inset 1px 2px 6px 5px var(--blue-main); */
+  /* border-radius: 5px; */
   padding-left: 8px;
+  margin-left: 8px;
 }
 
 .form__input::placeholder {
   color: #000000;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .form__button {
-  width: 30px;
-  height: 30px;
-  background-image: url("https://cdn-icons.flaticon.com/png/512/2311/premium/2311526.png?token=exp=1648920257~hmac=063fbe5ebacdd1ff3d7b2194dc4dded5");
-  /* background-image: url("https://cdn-icons-png.flaticon.com/512/667/667332.png"); */
+  width: 25px;
+  height: 25px;
+  /* background-image: url("https://cdn-icons.flaticon.com/png/512/2311/premium/2311526.png?token=exp=1648920257~hmac=063fbe5ebacdd1ff3d7b2194dc4dded5"); */
+  background-image: url("https://cdn-icons-png.flaticon.com/512/25/25313.png");
+  background-repeat: no-repeat;
   background-size: contain;
   border: none;
   background-color: transparent;
@@ -80,7 +84,7 @@
 
   .form {
     width: 300px;
-    font-size: 1em;
+    font-size: 0.5em;
   }
 
   .form::placeholder {
@@ -88,10 +92,13 @@
   }
 
   .nav__link {
-    color: var(--white);
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 0.8em;
+    font-size: 1em;
+    font-weight: 600;
+    margin-right: 10px;
+    border: none;
+    background-color: transparent;
+    color: #000000;
+    transition: all 0.1s ease-in-out 0.2s;
   }
 
   .nav__link:first-of-type {
@@ -101,6 +108,7 @@
 
 @media (min-width: 1440px) {
   .nav {
+    width: 1300px;
     padding: 20px 0;
   }
 
@@ -118,12 +126,6 @@
 
   .nav__link {
     font-size: 1.3em;
-    font-weight: 600;
-    margin-right: 10px;
-    border: none;
-    background-color: transparent;
-    color: #000000;
-    transition: all 0.1s ease-in-out 0.2s;
   }
 
   .nav__link:hover {
