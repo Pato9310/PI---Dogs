@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { API_KEY } = process.env;
 const { v4: uuidv4 } = require("uuid");
 const { Breed, Temperament } = require("../db.js");
 
@@ -7,17 +6,17 @@ const { Breed, Temperament } = require("../db.js");
 const preChargeDb = async () => {
   // Peticion a la API
   const apiResponse = await axios.get("https://api.thedogapi.com/v1/breeds");
-  let breeds = apiResponse.data.map((breed) => {
-    const height = breed.height["imperial"].split(" - ");
-    const weight = breed.weight["imperial"].split(" - ");
+  const breedsMap = apiResponse?.data.map((breed) => {
+    const height = breed?.height["imperial"].split(" - ");
+    const weight = breed?.weight["imperial"].split(" - ");
     const temperament =
-      breed.temperament !== null && breed.temperament !== undefined
-        ? breed.temperament.split(",").map((el) => el.trim())
+      breed?.temperament !== null && breed?.temperament !== undefined
+        ? breed?.temperament?.split(",")?.map((el) => el.trim())
         : ["No Temperament"];
     return {
       id: uuidv4().toString().toUpperCase().substring(0, 6),
-      name: breed.name,
-      image: breed.image.url,
+      name: breed.name.toLowerCase(),
+      image: breed?.image.url,
       temperament: temperament,
       min__height: parseInt(height[0])
         ? parseInt(height[0])
@@ -34,11 +33,21 @@ const preChargeDb = async () => {
       life__span: breed.life_span,
     };
   });
+
   // Ingreso a la DB
-  breeds = breeds.map(async (dog) => {
-    let breedCreated = await Breed.create(dog);
-    let tempCreated = await Temperament.create(dog);
-    await breedCreated.addTemperament(tempCreated.id);
+  breedsMap?.map(async (dog) => {
+    const newBreed = await Breed.create(dog);
+    dog?.temperament?.map(async (t) => {
+      const temperament = await Temperament.findOrCreate({
+        where: {
+          temperament: t.toLowerCase()
+        },
+        defaults: {
+          temperament: t.toLowerCase(),
+        }
+      })
+      await newBreed.addTemperament(temperament[0].id)
+    })
   });
 };
 

@@ -11,23 +11,10 @@ const getBreeds = async (req, res) => {
       const allBreeds = await Breed.findAll({
         include: Temperament,
       });
-      return res.send(
-        allBreeds.map((breed) => {
-          let obj = {
-            id: breed.id,
-            image: breed.image,
-            name: breed.name,
-            min__height: breed.min__height,
-            max__height: breed.max__height,
-            min__weight: breed.min__weight,
-            max__weight: breed.max__weight,
-            life__span: breed.life__span,
-            temperament: breed.Temperaments[0]?.temperament,
-          };
-          return obj;
-        })
-      );
+      
+      return res.send(allBreeds);
     }
+
     // caso contrario devuelve la raza del query o cualquier raza que contenga dicho query
     const list = await Breed.findAll({
       include: Temperament,
@@ -37,23 +24,8 @@ const getBreeds = async (req, res) => {
         },
       },
     });
-    return list.length > 0
-      ? res.send(
-          list.map((breed) => {
-            let obj = {
-              id: breed.id,
-              image: breed.image,
-              name: breed.name,
-              min__height: breed.min__height,
-              max__height: breed.max__height,
-              min__weight: breed.min__weight,
-              max__weight: breed.max__weight,
-              life__span: breed.life__span,
-              temperament: breed.Temperaments[0]?.temperament,
-            };
-            return obj;
-          })
-        )
+    list.length
+      ? res.send(list)
       : res.status(404).send({ message: "Breed does not found" });
   } catch (error) {
     res.status(404).send({ message: error.message });
@@ -67,7 +39,7 @@ const getByBreedId = async (req, res) => {
     try {
       const dog = await Breed.findOne({
         include: Temperament,
-        where: { id: id },
+        where: { id },
       });
       return dog
         ? res.status(200).send(dog)
@@ -81,33 +53,37 @@ const getByBreedId = async (req, res) => {
 
 // Crea una nueva raza segun los datos ingresados en el form del front
 const createBreed = async (req, res) => {
-  const {
-    name,
-    min__height,
-    max__height,
-    min__weight,
-    max__weight,
-    life__span,
-    image,
-    temperament,
-  } = req.body;
+  const { body } = req;
   try {
     const id = uuidv4().toString().toUpperCase();
-    const newBreed = await Breed.create({
-      id,
-      name,
-      image,
-      min__weight,
-      max__weight,
-      min__height,
-      max__height,
-      life__span,
+    // Insertando la nueva raza en la db
+    const newBreed = await Breed.findOrCreate({
+      where: {
+        name: body.name.toLowerCase()
+      },
+      defaults: {
+        id,
+        name: body.name.toLowerCase(),
+        image: body.image,
+        min__weight: body.min__weight,
+        max__weight: body.max__weight,
+        min__height: body.min__height,
+        max__height: body.max__height,
+        life__span: body.life__span,
+        dbBreed: true,
+      }
     });
-    const newTemperament = await Temperament.create({
-      id,
-      temperament,
-    });
-    await newBreed.addTemperament(newTemperament);
+
+    // Relacionando los temperamentos con la nueva raza
+    body?.temperament?.map(async(t) => {
+      const temp = await Temperament.findOne({
+        where: {
+          temperament: t.toLowerCase()
+        }
+      });
+      await newBreed[0].addTemperament(temp.id)
+    })
+
     return res.status(200).send({ message: "Dog created successfully" });
   } catch (err) {
     return res.status(404).send({ message: error.message });
@@ -118,37 +94,17 @@ const createBreed = async (req, res) => {
 const orderBreed = async (req, res) => {
   try {
     // Obtengo los valores de los atributos enviados por body
-    const { column, direction } = req.query;
+    const { body } = req;
+    const payload = Object.entries(body);
+
+    if (!payload) return res.status(404).send({ message: 'Body Not Found'});
+
+    const attributes = payload.map((p) => [p[0],p[1]]);
     let allBreeds = await Breed.findAll({
       include: Temperament,
+      order: attributes
     });
-    direction === "asc"
-      ? allBreeds.sort((a, b) => {
-          if (a[column] > b[column]) return 1;
-          if (a[column] < b[column]) return -1;
-          return 0;
-        })
-      : allBreeds.sort((a, b) => {
-          if (a[column] < b[column]) return 1;
-          if (a[column] > b[column]) return -1;
-          return 0;
-        });
-    return res.status(200).send(
-      allBreeds.map((breed) => {
-        let obj = {
-          id: breed.id,
-          image: breed.image,
-          name: breed.name,
-          min__height: breed.min__height,
-          max__height: breed.max__height,
-          min__weight: breed.min__weight,
-          max__weight: breed.max__weight,
-          life__span: breed.life__span,
-          temperament: breed.Temperaments[0]?.temperament,
-        };
-        return obj;
-      })
-    );
+    return res.status(200).send(allBreeds);
   } catch (error) {
     res.status(404).send({ message: error.message });
   }

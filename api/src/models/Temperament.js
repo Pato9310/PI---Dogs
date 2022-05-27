@@ -7,10 +7,10 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
-      defaultValue: sequelize.UUIDV4,
+      defaultValue: DataTypes.UUIDV4,
     },
     temperament: {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
+      type: DataTypes.STRING,
     },
   });
 };

@@ -19,6 +19,16 @@ const getTemperaments = async (req, res) => {
   }
 };
 
+const createTemperament = (req, res) => {
+  const { body } = req;
+  Temperament.findOrCreate({
+    where: {
+      temperament: body.temperament,
+    },
+  }).then((resolve) => res.status(200).send(resolve)).catch((error)=>res.status(404).send({ message: error.message }));
+};
+
 module.exports = {
   getTemperaments,
+  createTemperament,
 };

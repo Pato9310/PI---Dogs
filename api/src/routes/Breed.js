@@ -9,8 +9,8 @@ const {
 
 // Configuracion del router
 router.get("/", getBreeds);
-router.get("/order", orderBreed);
 router.get("/:id", getByBreedId);
+router.post("/order", orderBreed);
 router.post("/create", createBreed);
 
 module.exports = router;

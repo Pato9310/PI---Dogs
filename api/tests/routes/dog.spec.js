@@ -5,6 +5,7 @@ const app = require("../../src/app.js");
 const { Breed, conn } = require("../../src/db.js");
 
 const agent = session(app);
+console.log('soy agent:', agent.get('/breeds'))
 const dog = {
   id: "123456",
   name: "Pug",
@@ -16,11 +17,11 @@ const dog = {
 };
 
 describe("Routes Testing", () => {
-  before(() =>
-    conn.authenticate().catch((err) => {
-      console.error("Unable to connect to the database:", err);
-    })
-  );
+  // before(() =>
+  //   conn.authenticate().catch((err) => {
+  //     console.error("Unable to connect to the database:", err);
+  //   })
+  // );
   beforeEach(() => Breed.sync({ force: true }).then(() => Breed.create(dog)));
   describe("Breed route", () => {
     describe("GET /breeds:", () => {
